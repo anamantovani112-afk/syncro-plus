@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Family — SYNCRO+</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d;
+  --bg-soft:#15151a;
+  --card:#1c1c22;
+  --card-2:#23232b;
+  --text:#f4f2ee;
+  --muted:#9a9aa3;
+  --border:#2c2c34;
+  --accent:#e0203a;
+  --accent-d:#a3142a;
+  --ok:#2bb673; --ok-l:#16291f;
+  --er:#e0203a; --er-l:#2c151a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',Helvetica,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:16px;line-height:1.6;}
+
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:28px;padding:16px 24px;background:linear-gradient(to bottom, rgba(11,11,13,.95), rgba(11,11,13,.7));backdrop-filter:blur(6px);}
+.back{color:var(--muted);font-size:.82rem;font-weight:600;text-decoration:none;}
+.back:hover{color:var(--text);}
+.logo{font-weight:900;font-size:1.1rem;letter-spacing:.02em;color:var(--accent);margin-left:auto;}
+.logo span{color:var(--text);}
+
+.hero{position:relative;min-height:46vh;display:flex;align-items:flex-end;padding:0 24px 40px;background:
+  linear-gradient(to top, var(--bg) 4%, rgba(11,11,13,.25) 45%, rgba(11,11,13,.6) 100%),
+  linear-gradient(to right, rgba(11,11,13,.85) 10%, rgba(11,11,13,.2) 65%),
+  url('posters/modern_family.jpg');
+  background-size:cover;background-position:center 12%;}
+.hero-eye{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.hero h1{font-size:clamp(1.9rem,5vw,3rem);font-weight:900;line-height:1.08;max-width:600px;margin-bottom:10px;}
+.hero-sub{color:rgba(244,242,238,.75);font-size:.92rem;max-width:540px;line-height:1.7;}
+.hmeta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;}
+.hpill{padding:6px 16px;font-size:.78rem;font-weight:700;border-radius:99px;background:rgba(154,154,163,.18);color:var(--text);border:1px solid var(--border);}
+
+.page{max-width:820px;margin:0 auto;padding:0 24px 80px;}
+.section{background:var(--card);border-radius:16px;padding:34px 32px;margin-top:20px;border:1px solid var(--border);}
+@media(max-width:600px){.section{padding:22px 16px;border-radius:14px;}}
+.s-lbl{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.s-title{font-size:1.35rem;font-weight:800;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.phase{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;margin-bottom:20px;border-radius:99px;background:rgba(224,32,58,.15);color:#ff5470;}
+.divider{border:none;border-top:1px solid var(--border);margin:24px 0;}
+
+.wcard-vid{display:flex;align-items:center;gap:18px;background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:6px;}
+.wcard-vid .vthumb{font-size:2.2rem;flex-shrink:0;}
+.wcard-vid .vinfo{flex:1;}
+.wcard-vid .vinfo h4{color:var(--text);font-size:1rem;font-weight:700;margin-bottom:4px;}
+.wcard-vid .vinfo p{color:var(--muted);font-size:.82rem;}
+.vlink{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--text);border-radius:10px;padding:11px 22px;font-size:.85rem;font-weight:700;text-decoration:none;flex-shrink:0;white-space:nowrap;}
+.vlink:hover{background:var(--accent-d);}
+.vcap{font-size:.78rem;color:var(--muted);margin-bottom:18px;margin-top:10px;}
+
+.wcard{background:var(--bg-soft);border:1.5px solid var(--border);border-radius:14px;padding:20px;}
+.wemoji{font-size:1.6rem;margin-bottom:8px;}
+.wq{font-size:.95rem;font-weight:600;line-height:1.5;margin-bottom:12px;}
+.wi{width:100%;border:1.5px solid var(--border);background:var(--card-2);padding:10px 12px;border-radius:8px;font-family:inherit;font-size:.9rem;color:var(--text);resize:vertical;min-height:60px;outline:none;}
+.wi:focus{border-color:var(--accent);}
+.wi::placeholder{color:var(--muted);}
+
+.syn{background:rgba(43,182,115,.1);border:1.5px solid rgba(43,182,115,.35);border-radius:14px;padding:18px 20px;margin-bottom:6px;}
+.syn p{font-size:.9rem;line-height:1.7;color:#8de6b6;}
+
+.excard{border-radius:12px;border:1.5px solid var(--border);padding:18px 20px;margin-bottom:14px;background:var(--bg-soft);}
+.exs{font-size:.95rem;line-height:1.65;margin-bottom:14px;color:var(--text);}
+.hl{background:rgba(224,32,58,.22);color:#ff8aa0;padding:2px 7px;border-radius:6px;font-weight:700;}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:500px){.opts{grid-template-columns:1fr;}}
+.opt{background:var(--card-2);border:1.5px solid var(--border);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:.84rem;cursor:pointer;text-align:left;transition:all .15s;line-height:1.35;color:var(--muted);}
+.opt:hover{border-color:var(--accent);background:rgba(224,32,58,.1);color:var(--text);}
+.opt.correct{border-color:var(--ok);background:var(--ok-l);color:#8de6b6;font-weight:600;}
+.opt.wrong{border-color:var(--er);background:var(--er-l);color:#ff8aa0;}
+
+.vlist{display:flex;flex-direction:column;gap:8px;}
+.vitem{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:12px;padding:12px 16px;cursor:pointer;transition:all .15s;}
+.vitem:hover{border-color:var(--accent);background:var(--card-2);}
+.vw{font-weight:700;font-size:.95rem;min-width:150px;display:flex;align-items:center;gap:8px;position:relative;color:#ff8aa0;}
+.vph{color:var(--muted);font-size:.85rem;}
+.vpos{background:rgba(43,182,115,.18);color:#8de6b6;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:99px;}
+.vdef{color:var(--muted);font-size:.86rem;flex:1;min-width:150px;line-height:1.4;}
+.vab{background:none;border:none;font-size:1rem;cursor:pointer;margin-left:auto;flex-shrink:0;opacity:.6;}
+.vab:hover{opacity:1;}
+.ib{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:var(--accent);color:var(--text);border-radius:50%;font-size:.6rem;font-weight:700;cursor:pointer;flex-shrink:0;position:relative;transition:background .15s;}
+.ib:hover{background:var(--text);color:var(--bg);}
+.ic{display:none;position:absolute;left:0;top:24px;width:240px;background:#000;border:1px solid var(--border);color:var(--text);border-radius:12px;padding:14px 16px;font-size:.77rem;line-height:1.55;z-index:50;font-weight:400;}
+.ic.show{display:block;}
+.ititle{font-weight:700;font-size:.77rem;margin-bottom:6px;color:var(--accent);display:block;}
+
+.gfw{display:grid;grid-template-columns:1fr 180px;gap:20px;align-items:start;}
+@media(max-width:600px){.gfw{grid-template-columns:1fr;}}
+.gfl{display:flex;flex-direction:column;gap:10px;}
+.gfi{display:flex;gap:10px;align-items:baseline;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;font-size:.91rem;line-height:1.65;color:var(--muted);}
+.gn{font-weight:700;color:var(--accent);min-width:18px;}
+.gap{display:inline-block;border-bottom:2.5px solid var(--accent);min-width:100px;padding:0 4px;cursor:pointer;color:#ff8aa0;font-weight:600;font-size:.9rem;transition:background .15s;border-radius:3px;}
+.gap:hover{background:rgba(224,32,58,.15);}
+.gap.gok{border-color:var(--ok);color:var(--ok);background:var(--ok-l);cursor:default;}
+.gap.ger{border-color:var(--er);color:#ff8aa0;background:var(--er-l);}
+.wb{background:var(--bg-soft);border:1.5px solid var(--border);border-radius:14px;padding:16px;position:sticky;top:66px;}
+.wb h4{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.wbi{display:block;width:100%;background:var(--card-2);border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;margin-bottom:7px;font-family:inherit;font-size:.84rem;font-weight:600;color:var(--text);cursor:pointer;text-align:center;transition:all .15s;}
+.wbi:hover:not(.used){background:var(--accent);color:var(--text);border-color:var(--accent);}
+.wbi.sel{background:var(--accent);color:var(--text);border-color:var(--accent);}
+.wbi.used{opacity:.3;cursor:not-allowed;text-decoration:line-through;}
+@media(max-width:600px){
+  .gfw{display:flex;flex-direction:column;}
+  .wb{order:-1;position:sticky;top:54px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;z-index:10;}
+  .wb h4{width:100%;margin-bottom:6px;}
+  .wbi{flex:1 1 auto;width:auto;margin-bottom:0;}
+}
+
+.dvw{background:rgba(224,32,58,.18);color:#ff8aa0;padding:1px 7px;border-radius:5px;font-weight:700;font-size:.88em;}
+.dq{display:flex;gap:14px;align-items:flex-start;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;}
+.dnum{width:30px;height:30px;flex-shrink:0;background:var(--accent);color:var(--text);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;margin-top:2px;}
+.dtext{font-size:.92rem;line-height:1.65;color:var(--muted);}
+.dtext strong{color:var(--text);}
+.dtext textarea{width:100%;margin-top:8px;border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;font-family:inherit;font-size:.88rem;resize:none;min-height:52px;background:var(--card-2);color:var(--text);transition:border-color .2s;}
+.dtext textarea::placeholder{color:var(--muted);}
+.dtext textarea:focus{outline:none;border-color:var(--accent);}
+
+.cbtn{background:var(--accent);color:var(--text);border:none;border-radius:10px;padding:11px 24px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer;margin-top:16px;transition:opacity .2s;}
+.cbtn:hover{opacity:.85;}
+.rbtn{background:transparent;color:var(--muted);border:1.5px solid var(--border);border-radius:10px;padding:11px 18px;font-family:inherit;font-size:.88rem;font-weight:600;cursor:pointer;margin-top:16px;margin-left:8px;}
+.rbtn:hover{border-color:var(--text);color:var(--text);}
+.score{display:inline-block;background:var(--ok-l);border:1.5px solid var(--ok);color:#8de6b6;border-radius:99px;padding:8px 18px;font-weight:700;font-size:.88rem;margin-top:12px;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a class="back" href="movies_series_catalog.html">← Back to catalog</a>
+  <div class="logo">SYNCRO<span>+</span></div>
+</div>
+
+<div class="hero">
+  <div>
+    <span class="hero-eye">Series Lesson · Comedy</span>
+    <h1>Modern Family — The Big Day</h1>
+    <p class="hero-sub">A wedding brings the whole extended family together — and along the way, kids ask awkward questions, parents try to keep family traditions alive, and nobody can stop talking about it.</p>
+    <div class="hmeta">
+      <span class="hpill">A2–B1</span>
+      <span class="hpill">~22 min</span>
+      <span class="hpill">8 key words</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ══ VIDEO ══ -->
+<section class="section" id="video">
+  <p class="s-lbl">Watch</p>
+  <h2 class="s-title">The Episode</h2>
+  <div class="wcard-vid">
+    <span class="vthumb">📺</span>
+    <div class="vinfo">
+      <h4>Modern Family — The Big Day</h4>
+      <p>Opens on YouTube in a new tab</p>
+    </div>
+    <a class="vlink" href="https://www.youtube.com/watch?v=N4SzNelfxP8&list=PL_q4SUe5kD2n7-OqqN1nqjB7OtR_Qsoq0" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+  </div>
+  <p class="vcap">Watch with your teacher. Don't worry about understanding everything the first time.</p>
+</section>
+
+<!-- ══ WARM-UP ══ -->
+<section class="section" id="warmup">
+  <p class="s-lbl">Section 1</p>
+  <h2 class="s-title">Warm-Up</h2>
+  <span class="phase">Before you watch — talk with your teacher</span>
+
+  <div class="wcard">
+    <div class="wemoji">👰</div>
+    <div class="wq">Think of a wedding or big family celebration you've been to. What do you remember most about it?</div>
+    <textarea class="wi" placeholder="I remember a wedding where..."></textarea>
+  </div>
+</section>
+
+<!-- ══ VOCABULARY ══ -->
+<section class="section" id="vocab">
+  <p class="s-lbl">Section 2</p>
+  <h2 class="s-title">Vocabulary</h2>
+  <span class="phase">Words from the episode</span>
+
+  <div class="syn">
+    <p>The extended family gathers for a big wedding day, and almost everything that can happen does. Kids say things at the worst possible moments, parents try to follow old family customs, and the couple getting married just wants the day to go smoothly — with very mixed results.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:.95rem;font-weight:700;margin-bottom:4px;">M — Meaning</h3>
+  <p style="color:var(--muted);font-size:.86rem;margin-bottom:18px;">Read each sentence. Choose the best meaning for the <span class="hl">highlighted word</span>.</p>
+
+  <div class="excard">
+    <p class="exs">1. The actors had one more <span class="hl">rehearsal</span> before the show opened to the public.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">a formal apology after a mistake</button>
+      <button class="opt" onclick="cM(this,false)">a final performance in front of paying customers</button>
+      <button class="opt" onclick="cM(this,true)">a practice session before the real event</button>
+      <button class="opt" onclick="cM(this,false)">a written review of a performance</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">2. There was an <span class="hl">awkward</span> silence after he forgot her name in front of everyone.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">carefully planned in advance</button>
+      <button class="opt" onclick="cM(this,false)">loud and full of energy</button>
+      <button class="opt" onclick="cM(this,false)">extremely funny and lighthearted</button>
+      <button class="opt" onclick="cM(this,true)">uncomfortable or embarrassing</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">3. Don't <span class="hl">embarrass</span> me by telling that story in front of my boss!</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">to help someone solve a problem</button>
+      <button class="opt" onclick="cM(this,false)">to remind someone of an old memory</button>
+      <button class="opt" onclick="cM(this,true)">to make someone feel ashamed or uncomfortable</button>
+      <button class="opt" onclick="cM(this,false)">to make someone feel proud</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">4. She has three <span class="hl">siblings</span>: two brothers and one sister.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">a member of a sports team</button>
+      <button class="opt" onclick="cM(this,true)">a brother or sister</button>
+      <button class="opt" onclick="cM(this,false)">a neighbor who lives nearby</button>
+      <button class="opt" onclick="cM(this,false)">a close friend from childhood</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">5. He tends to <span class="hl">exaggerate</span> how difficult his job is.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">to forget the details of a story</button>
+      <button class="opt" onclick="cM(this,false)">to refuse to talk about something</button>
+      <button class="opt" onclick="cM(this,true)">to describe something as bigger or worse than it really is</button>
+      <button class="opt" onclick="cM(this,false)">to explain something very simply</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">6. Eating a big dinner together on Sundays is a <span class="hl">tradition</span> in their family.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">a rule that the government enforces</button>
+      <button class="opt" onclick="cM(this,false)">a type of formal celebration only</button>
+      <button class="opt" onclick="cM(this,false)">a private agreement between two people</button>
+      <button class="opt" onclick="cM(this,true)">a custom passed down over time</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">7. After her parents remarried, she grew up in a <span class="hl">blended family</span> with two stepbrothers.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">a family business run by several generations</button>
+      <button class="opt" onclick="cM(this,false)">a family that travels together often</button>
+      <button class="opt" onclick="cM(this,false)">a family that lives in several countries</button>
+      <button class="opt" onclick="cM(this,true)">a family formed when parents with children from previous relationships join together</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">8. With three kids and a new job, she felt completely <span class="hl">overwhelmed</span>.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">extremely organized and prepared</button>
+      <button class="opt" onclick="cM(this,false)">bored and uninterested</button>
+      <button class="opt" onclick="cM(this,true)">having too much to handle at once</button>
+      <button class="opt" onclick="cM(this,false)">very relaxed and calm</button>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:.95rem;font-weight:700;margin-bottom:4px;">P — Pronunciation</h3>
+  <p style="color:var(--muted);font-size:.86rem;margin-bottom:18px;">Click each word to hear it. Tap <strong>i</strong> to learn more.</p>
+
+  <div class="vlist">
+    <div class="vitem" onclick="speak('rehearsal')">
+      <span class="vw">rehearsal<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Word family</span><strong>rehearse</strong> (verb) → <strong>rehearsal</strong> (noun)<br><br>"They had a wedding rehearsal the night before."</span></span></span>
+      <span class="vph">/rɪˈhɝː.səl/</span><span class="vpos">noun</span>
+      <span class="vdef">a practice session before the real event</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('awkward')">
+      <span class="vw">awkward<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Common phrase</span>"an awkward situation" / "an awkward question"<br><br>Often used to describe small social discomfort.</span></span></span>
+      <span class="vph">/ˈɔːk.wərd/</span><span class="vpos">adjective</span>
+      <span class="vdef">uncomfortable or embarrassing</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('embarrass')">
+      <span class="vw">embarrass<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Word family</span><strong>embarrass</strong> (verb) → <strong>embarrassing</strong> (adj) → <strong>embarrassment</strong> (noun)</span></span></span>
+      <span class="vph">/ɪmˈbær.əs/</span><span class="vpos">verb</span>
+      <span class="vdef">to make someone feel ashamed or uncomfortable</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('sibling')">
+      <span class="vw">sibling<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Neutral term</span><em>sibling</em> works for both brothers and sisters — useful when gender isn't specified.</span></span></span>
+      <span class="vph">/ˈsɪb.lɪŋ/</span><span class="vpos">noun</span>
+      <span class="vdef">a brother or sister</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('exaggerate')">
+      <span class="vw">exaggerate<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Word family</span><strong>exaggerate</strong> (verb) → <strong>exaggeration</strong> (noun)<br><br>"That's an exaggeration!"</span></span></span>
+      <span class="vph">/ɪɡˈzædʒ.ə.reɪt/</span><span class="vpos">verb</span>
+      <span class="vdef">to describe something as bigger or worse than it really is</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('tradition')">
+      <span class="vw">tradition<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Word family</span><strong>tradition</strong> (noun) → <strong>traditional</strong> (adjective)</span></span></span>
+      <span class="vph">/trəˈdɪʃ.ən/</span><span class="vpos">noun</span>
+      <span class="vdef">a custom passed down over time</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('blended family')">
+      <span class="vw">blended family<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Related terms</span><em>stepfather / stepmother</em> = parent's new partner<br><em>stepbrother / stepsister</em> = their children</span></span></span>
+      <span class="vph">/ˈblɛn.dɪd ˈfæm.ə.li/</span><span class="vpos">noun phrase</span>
+      <span class="vdef">a family formed when parents with children from previous relationships join together</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('overwhelmed')">
+      <span class="vw">overwhelmed<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Word family</span><strong>overwhelm</strong> (verb) → <strong>overwhelmed</strong> (adjective)<br><br>"I'm overwhelmed with work this week."</span></span></span>
+      <span class="vph">/ˌoʊ.vɚˈwɛlmd/</span><span class="vpos">adjective</span>
+      <span class="vdef">having too much to handle at once</span>
+      <button class="vab">🔊</button>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:.95rem;font-weight:700;margin-bottom:4px;">F — Form/Fill: Fill in the Gaps</h3>
+  <p style="color:var(--muted);font-size:.86rem;margin-bottom:18px;">Click a word from the bank, then click the blank.</p>
+
+  <div class="gfw">
+    <div class="gfl">
+      <div class="gfi"><span class="gn">1.</span><span>The wedding <span class="gap" data-answer="rehearsal" onclick="fG(this)">___________</span> happened the night before the big day.</span></div>
+      <div class="gfi"><span class="gn">2.</span><span>There was an <span class="gap" data-answer="awkward" onclick="fG(this)">___________</span> pause when the groom forgot his vows.</span></div>
+      <div class="gfi"><span class="gn">3.</span><span>Please don't <span class="gap" data-answer="embarrass" onclick="fG(this)">___________</span> me in front of the whole family!</span></div>
+      <div class="gfi"><span class="gn">4.</span><span>Growing up with four <span class="gap" data-answer="siblings" onclick="fG(this)">___________</span> meant the house was never quiet.</span></div>
+      <div class="gfi"><span class="gn">5.</span><span>He likes to <span class="gap" data-answer="exaggerate" onclick="fG(this)">___________</span> every story to make it sound more exciting.</span></div>
+      <div class="gfi"><span class="gn">6.</span><span>Decorating the tree every December is a family <span class="gap" data-answer="tradition" onclick="fG(this)">___________</span>.</span></div>
+      <div class="gfi"><span class="gn">7.</span><span>Their <span class="gap" data-answer="blended family" onclick="fG(this)">___________</span> includes kids from two previous marriages.</span></div>
+      <div class="gfi"><span class="gn">8.</span><span>Planning the entire wedding alone left her feeling <span class="gap" data-answer="overwhelmed" onclick="fG(this)">___________</span>.</span></div>
+    </div>
+    <div class="wb">
+      <h4>Word Bank</h4>
+      <button class="wbi" onclick="sW(this)">embarrass</button>
+      <button class="wbi" onclick="sW(this)">overwhelmed</button>
+      <button class="wbi" onclick="sW(this)">awkward</button>
+      <button class="wbi" onclick="sW(this)">tradition</button>
+      <button class="wbi" onclick="sW(this)">siblings</button>
+      <button class="wbi" onclick="sW(this)">blended family</button>
+      <button class="wbi" onclick="sW(this)">rehearsal</button>
+      <button class="wbi" onclick="sW(this)">exaggerate</button>
+    </div>
+  </div>
+  <button class="cbtn" onclick="chGF()">Check Answers</button>
+  <button class="rbtn" onclick="rsGF()">Reset</button>
+  <div id="gfs" class="score" style="display:none;"></div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:.95rem;font-weight:700;margin-bottom:4px;">U — Use</h3>
+  <p style="color:var(--muted);font-size:.86rem;margin-bottom:16px;">Answer with your teacher, using the word in your response.</p>
+  <div style="display:flex;flex-direction:column;gap:9px;">
+    <div class="dq"><div class="dnum">1</div><div class="dtext">Have you ever had an important <span class="dvw">rehearsal</span> before a performance, interview, or big event?</div></div>
+    <div class="dq"><div class="dnum">2</div><div class="dtext">Tell us about a time you felt <span class="dvw">awkward</span> in a social situation.</div></div>
+    <div class="dq"><div class="dnum">3</div><div class="dtext">Have you ever done something that ended up <span class="dvw">embarrassing</span> a family member?</div></div>
+    <div class="dq"><div class="dnum">4</div><div class="dtext">Do you have <span class="dvw">siblings</span>? What is your relationship like with them?</div></div>
+    <div class="dq"><div class="dnum">5</div><div class="dtext">Do you know someone who likes to <span class="dvw">exaggerate</span> their stories? Give an example.</div></div>
+    <div class="dq"><div class="dnum">6</div><div class="dtext">What is one <span class="dvw">tradition</span> your family always follows during holidays?</div></div>
+    <div class="dq"><div class="dnum">7</div><div class="dtext">Do you know any <span class="dvw">blended families</span>? What do you think are the biggest challenges?</div></div>
+    <div class="dq"><div class="dnum">8</div><div class="dtext">What is something that makes you feel <span class="dvw">overwhelmed</span> in daily life?</div></div>
+  </div>
+</section>
+
+<!-- ══ DISCUSSION ══ -->
+<section class="section" id="discuss">
+  <p class="s-lbl">Section 3</p>
+  <h2 class="s-title">Discussion</h2>
+  <span class="phase">Talk about the episode</span>
+
+  <div class="dq"><div class="dnum">1</div><div class="dtext">Modern Family shows several very different family structures living in the same extended family. Which family in the show do you relate to most, and why?<textarea placeholder="I relate most to..."></textarea></div></div>
+  <div class="dq"><div class="dnum">2</div><div class="dtext">Kids in the show often say funny or surprising things without realizing it. Do you remember something funny a child once said to you?<textarea placeholder="One time, a child told me..."></textarea></div></div>
+  <div class="dq"><div class="dnum">3</div><div class="dtext">The show uses a "mockumentary" style, with characters talking directly to the camera. Do you think this makes the comedy funnier? Why or why not?<textarea placeholder="I think this style is..."></textarea></div></div>
+  <div class="dq"><div class="dnum">4</div><div class="dtext">Weddings, parties, and family traditions appear often in the show. What is your favorite family celebration?<textarea placeholder="My favorite family celebration is..."></textarea></div></div>
+  <div class="dq"><div class="dnum">5</div><div class="dtext">If you were part of this extended family, which character do you think you would get along with best?<textarea placeholder="I think I would get along with..."></textarea></div></div>
+</section>
+
+</div>
+
+<script>
+function speak(w){if(!window.speechSynthesis)return;const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u);}
+function ti(b){const c=b.querySelector('.ic');document.querySelectorAll('.ic.show').forEach(e=>{if(e!==c)e.classList.remove('show');});c.classList.toggle('show');}
+document.addEventListener('click',e=>{if(!e.target.closest('.ib'))document.querySelectorAll('.ic.show').forEach(e=>e.classList.remove('show'));});
+function cM(btn,ok){const card=btn.closest('.excard');if(card.querySelector('.correct'))return;btn.classList.add(ok?'correct':'wrong');if(!ok)setTimeout(()=>{card.querySelectorAll('.opt').forEach(b=>{if(b.getAttribute('onclick').includes('true'))b.classList.add('correct');});},600);}
+let pk=null;
+function sW(btn){if(btn.classList.contains('used'))return;document.querySelectorAll('.wbi').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');pk=btn;}
+function fG(gap){
+  if(!pk)return;
+  if(gap.dataset.filled){document.querySelectorAll('.wbi').forEach(b=>{if(b.textContent.trim()===gap.dataset.filled)b.classList.remove('used');});}
+  gap.textContent=pk.textContent.trim();gap.dataset.filled=pk.textContent.trim();
+  gap.classList.remove('gok','ger');pk.classList.add('used');pk.classList.remove('sel');pk=null;
+}
+function chGF(){
+  let c=0;
+  document.querySelectorAll('.gap').forEach(g=>{
+    if(!g.dataset.filled)return;
+    const ans=g.dataset.answer.toLowerCase();
+    const fil=g.dataset.filled.toLowerCase();
+    if(fil===ans){g.classList.add('gok');g.classList.remove('ger');c++;}
+    else{g.classList.add('ger');g.classList.remove('gok');}
+  });
+  const s=document.getElementById('gfs');s.textContent=`Score: ${c} / 8`;s.style.display='inline-block';
+}
+function rsGF(){
+  document.querySelectorAll('.gap').forEach(g=>{g.textContent='___________';g.classList.remove('gok','ger');delete g.dataset.filled;});
+  document.querySelectorAll('.wbi').forEach(b=>b.classList.remove('used','sel'));
+  document.getElementById('gfs').style.display='none';pk=null;
+}
+</script>
+</body>
+</html>

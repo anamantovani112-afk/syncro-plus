@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYNCRO+ — Series Catalog</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d;
+  --bg-soft:#15151a;
+  --card:#1c1c22;
+  --text:#f4f2ee;
+  --muted:#9a9aa3;
+  --accent:#e0203a;
+  --accent-d:#a3142a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',Helvetica,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* ── NAV ─── */
+.nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;gap:28px;padding:18px 44px;background:linear-gradient(to bottom, rgba(11,11,13,.95), rgba(11,11,13,.7));backdrop-filter:blur(6px);}
+.logo{font-weight:900;font-size:1.3rem;letter-spacing:.02em;color:var(--accent);}
+.logo span{color:var(--text);}
+.navlinks{display:flex;gap:22px;}
+.navlinks a{color:var(--muted);font-size:.85rem;font-weight:600;text-decoration:none;}
+.navlinks a.active{color:var(--text);}
+
+/* ── HERO ─── */
+.hero{position:relative;min-height:62vh;display:flex;align-items:flex-end;padding:0 44px 56px;background:
+  linear-gradient(to top, var(--bg) 2%, rgba(11,11,13,.2) 40%, rgba(11,11,13,.55) 100%),
+  linear-gradient(to right, rgba(11,11,13,.85) 10%, rgba(11,11,13,.15) 60%),
+  url('posters/b99.jpg');
+  background-size:cover;background-position:center 20%;}
+.hero-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:900;line-height:1.05;max-width:640px;margin-bottom:14px;}
+.hero p{color:rgba(244,242,238,.8);font-size:1rem;max-width:540px;line-height:1.6;margin-bottom:24px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:8px;padding:13px 28px;font-family:inherit;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;}
+.btn.play{background:var(--text);color:var(--bg);}
+.btn.play:hover{background:rgba(244,242,238,.85);}
+.btn.info{background:rgba(154,154,163,.3);color:var(--text);}
+.btn.info:hover{background:rgba(154,154,163,.45);}
+
+/* ── ROWS ─── */
+.rows{padding:10px 0 70px;}
+.row{margin-bottom:40px;}
+.row-head{display:flex;align-items:baseline;justify-content:space-between;padding:0 44px;margin-bottom:14px;}
+.row-title{font-size:1.25rem;font-weight:800;}
+.row-sub{font-size:.78rem;color:var(--muted);}
+.row-track{display:flex;gap:14px;overflow-x:auto;padding:6px 44px 18px;scroll-behavior:smooth;}
+.row-track::-webkit-scrollbar{height:6px;}
+.row-track::-webkit-scrollbar-thumb{background:var(--card);border-radius:99px;}
+
+.tile{flex:0 0 200px;position:relative;border-radius:10px;overflow:hidden;background:var(--card);cursor:pointer;transition:transform .25s ease;text-decoration:none;color:inherit;}
+.tile:hover{transform:scale(1.06);z-index:5;}
+.tile-img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--bg-soft);}
+.tile-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.1) 55%, transparent 75%);opacity:0;transition:opacity .2s;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;}
+.tile:hover .tile-overlay{opacity:1;}
+.tile-name{font-size:.92rem;font-weight:700;margin-bottom:4px;}
+.tile-genre{font-size:.68rem;color:var(--muted);margin-bottom:8px;}
+.tile-cta{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;color:var(--accent);}
+.tile.soon .tile-cta{color:var(--muted);}
+.tile-badge{position:absolute;top:8px;right:8px;font-size:.6rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:5px;background:var(--accent);color:var(--text);}
+.tile-badge.soon{background:rgba(0,0,0,.6);color:var(--muted);border:1px solid var(--muted);}
+
+/* footer note */
+.footnote{padding:30px 44px 60px;color:var(--muted);font-size:.78rem;max-width:600px;line-height:1.7;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="logo">SYNCRO<span>+</span></div>
+  <div class="navlinks">
+    <a href="#" class="active">Series</a>
+    <a href="../movies_series_lesson_1.html">Movies &amp; Series Lesson</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div>
+    <span class="hero-tag">Featured Lesson</span>
+    <h1>Brooklyn Nine-Nine</h1>
+    <p>Every year, the detectives of the 99th Precinct compete in a chaotic heist game — and this year, Jake has a much bigger plan than winning.</p>
+    <div class="hero-actions">
+      <a class="btn play" href="b99_lesson.html">▶ Start Lesson</a>
+      <a class="btn info" href="#row-comedy">More Info</a>
+    </div>
+  </div>
+</div>
+
+<div class="rows">
+
+  <div class="row" id="row-comedy">
+    <div class="row-head"><span class="row-title">Comedy</span><span class="row-sub">scroll for more →</span></div>
+    <div class="row-track">
+
+      <a class="tile" href="b99_lesson.html">
+        <img class="tile-img" src="posters/b99.jpg" alt="Brooklyn Nine-Nine">
+        <span class="tile-badge">Ready</span>
+        <div class="tile-overlay">
+          <span class="tile-name">Brooklyn Nine-Nine</span>
+          <span class="tile-genre">Sitcom · Police Comedy</span>
+          <span class="tile-cta">▶ Start lesson</span>
+        </div>
+      </a>
+
+      <a class="tile" href="modern_family_lesson.html">
+        <img class="tile-img" src="posters/modern_family.jpg" alt="Modern Family">
+        <span class="tile-badge">Ready</span>
+        <div class="tile-overlay">
+          <span class="tile-name">Modern Family</span>
+          <span class="tile-genre">Sitcom · Family</span>
+          <span class="tile-cta">▶ Start lesson</span>
+        </div>
+      </a>
+
+      <a class="tile" href="tbbt_lesson.html">
+        <img class="tile-img" src="posters/tbbt.jpg" alt="The Big Bang Theory">
+        <span class="tile-badge">Ready</span>
+        <div class="tile-overlay">
+          <span class="tile-name">The Big Bang Theory</span>
+          <span class="tile-genre">Sitcom · Nerd Comedy</span>
+          <span class="tile-cta">▶ Start lesson</span>
+        </div>
+      </a>
+
+      <a class="tile" href="friends_lesson.html">
+        <img class="tile-img" src="posters/friends.jpg" alt="Friends">
+        <span class="tile-badge">Ready</span>
+        <div class="tile-overlay">
+          <span class="tile-name">Friends</span>
+          <span class="tile-genre">Sitcom · Classic</span>
+          <span class="tile-cta">▶ Start lesson</span>
+        </div>
+      </a>
+
+      <a class="tile" href="himym_lesson.html">
+        <img class="tile-img" src="posters/himym.jpg" alt="How I Met Your Mother">
+        <span class="tile-badge">Ready</span>
+        <div class="tile-overlay">
+          <span class="tile-name">How I Met Your Mother</span>
+          <span class="tile-genre">Sitcom · Romance</span>
+          <span class="tile-cta">▶ Start lesson</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="row" id="row-drama">
+    <div class="row-head"><span class="row-title">Drama</span><span class="row-sub">scroll for more →</span></div>
+    <div class="row-track">
+
+      <a class="tile" href="gossip_girl_lesson.html">
+        <img class="tile-img" src="posters/gossip_girl.jpg" alt="Gossip Girl">
+        <span class="tile-badge">Ready</span>
+        <div class="tile-overlay">
+          <span class="tile-name">Gossip Girl</span>
+          <span class="tile-genre">Teen Drama</span>
+          <span class="tile-cta">▶ Start lesson</span>
+        </div>
+      </a>
+
+      <a class="tile" href="suits_lesson.html">
+        <img class="tile-img" src="posters/suits.jpg" alt="Suits">
+        <span class="tile-badge">Ready</span>
+        <div class="tile-overlay">
+          <span class="tile-name">Suits</span>
+          <span class="tile-genre">Legal Drama</span>
+          <span class="tile-cta">▶ Start lesson</span>
+        </div>
+      </a>
+
+      <a class="tile" href="breaking_bad_lesson.html">
+        <img class="tile-img" src="posters/breaking_bad.jpg" alt="Breaking Bad">
+        <span class="tile-badge">Ready</span>
+        <div class="tile-overlay">
+          <span class="tile-name">Breaking Bad</span>
+          <span class="tile-genre">Crime Drama</span>
+          <span class="tile-cta">▶ Start lesson</span>
+        </div>
+      </a>
+
+      <a class="tile" href="greys_anatomy_lesson.html">
+        <img class="tile-img" src="posters/greys_anatomy.jpg" alt="Grey's Anatomy">
+        <span class="tile-badge">Ready</span>
+        <div class="tile-overlay">
+          <span class="tile-name">Grey's Anatomy</span>
+          <span class="tile-genre">Medical Drama</span>
+          <span class="tile-cta">▶ Start lesson</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+<p class="footnote">Choose a show — your teacher will play the matching episode, and the lesson will guide you through new words and questions about what happens.</p>
+
+</body>
+</html>

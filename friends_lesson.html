@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friends — SYNCRO+</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d;
+  --bg-soft:#15151a;
+  --card:#1c1c22;
+  --card-2:#23232b;
+  --text:#f4f2ee;
+  --muted:#9a9aa3;
+  --border:#2c2c34;
+  --accent:#e0203a;
+  --accent-d:#a3142a;
+  --ok:#2bb673; --ok-l:#16291f;
+  --er:#e0203a; --er-l:#2c151a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',Helvetica,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:16px;line-height:1.6;}
+
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:28px;padding:16px 24px;background:linear-gradient(to bottom, rgba(11,11,13,.95), rgba(11,11,13,.7));backdrop-filter:blur(6px);}
+.back{color:var(--muted);font-size:.82rem;font-weight:600;text-decoration:none;}
+.back:hover{color:var(--text);}
+.logo{font-weight:900;font-size:1.1rem;letter-spacing:.02em;color:var(--accent);margin-left:auto;}
+.logo span{color:var(--text);}
+
+.hero{position:relative;min-height:46vh;display:flex;align-items:flex-end;padding:0 24px 40px;background:
+  linear-gradient(to top, var(--bg) 4%, rgba(11,11,13,.25) 45%, rgba(11,11,13,.6) 100%),
+  linear-gradient(to right, rgba(11,11,13,.85) 10%, rgba(11,11,13,.2) 65%),
+  url('posters/friends.jpg');
+  background-size:cover;background-position:center 15%;}
+.hero-eye{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.hero h1{font-size:clamp(1.9rem,5vw,3rem);font-weight:900;line-height:1.08;max-width:600px;margin-bottom:10px;}
+.hero-sub{color:rgba(244,242,238,.75);font-size:.92rem;max-width:540px;line-height:1.7;}
+.hmeta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;}
+.hpill{padding:6px 16px;font-size:.78rem;font-weight:700;border-radius:99px;background:rgba(154,154,163,.18);color:var(--text);border:1px solid var(--border);}
+
+.page{max-width:820px;margin:0 auto;padding:0 24px 80px;}
+.section{background:var(--card);border-radius:16px;padding:34px 32px;margin-top:20px;border:1px solid var(--border);}
+@media(max-width:600px){.section{padding:22px 16px;border-radius:14px;}}
+.s-lbl{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.s-title{font-size:1.35rem;font-weight:800;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.phase{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;margin-bottom:20px;border-radius:99px;background:rgba(224,32,58,.15);color:#ff5470;}
+.divider{border:none;border-top:1px solid var(--border);margin:24px 0;}
+
+.wcard-vid{display:flex;align-items:center;gap:18px;background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:6px;}
+.wcard-vid .vthumb{font-size:2.2rem;flex-shrink:0;}
+.wcard-vid .vinfo{flex:1;}
+.wcard-vid .vinfo h4{color:var(--text);font-size:1rem;font-weight:700;margin-bottom:4px;}
+.wcard-vid .vinfo p{color:var(--muted);font-size:.82rem;}
+.vlink{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--text);border-radius:10px;padding:11px 22px;font-size:.85rem;font-weight:700;text-decoration:none;flex-shrink:0;white-space:nowrap;}
+.vlink:hover{background:var(--accent-d);}
+.vcap{font-size:.78rem;color:var(--muted);margin-bottom:18px;margin-top:10px;}
+
+.wcard{background:var(--bg-soft);border:1.5px solid var(--border);border-radius:14px;padding:20px;}
+.wemoji{font-size:1.6rem;margin-bottom:8px;}
+.wq{font-size:.95rem;font-weight:600;line-height:1.5;margin-bottom:12px;}
+.wi{width:100%;border:1.5px solid var(--border);background:var(--card-2);padding:10px 12px;border-radius:8px;font-family:inherit;font-size:.9rem;color:var(--text);resize:vertical;min-height:60px;outline:none;}
+.wi:focus{border-color:var(--accent);}
+.wi::placeholder{color:var(--muted);}
+
+.syn{background:rgba(43,182,115,.1);border:1.5px solid rgba(43,182,115,.35);border-radius:14px;padding:18px 20px;margin-bottom:6px;}
+.syn p{font-size:.9rem;line-height:1.7;color:#8de6b6;}
+
+.excard{border-radius:12px;border:1.5px solid var(--border);padding:18px 20px;margin-bottom:14px;background:var(--bg-soft);}
+.exs{font-size:.95rem;line-height:1.65;margin-bottom:14px;color:var(--text);}
+.hl{background:rgba(224,32,58,.22);color:#ff8aa0;padding:2px 7px;border-radius:6px;font-weight:700;}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:500px){.opts{grid-template-columns:1fr;}}
+.opt{background:var(--card-2);border:1.5px solid var(--border);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:.84rem;cursor:pointer;text-align:left;transition:all .15s;line-height:1.35;color:var(--muted);}
+.opt:hover{border-color:var(--accent);background:rgba(224,32,58,.1);color:var(--text);}
+.opt.correct{border-color:var(--ok);background:var(--ok-l);color:#8de6b6;font-weight:600;}
+.opt.wrong{border-color:var(--er);background:var(--er-l);color:#ff8aa0;}
+
+.vlist{display:flex;flex-direction:column;gap:8px;}
+.vitem{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:12px;padding:12px 16px;cursor:pointer;transition:all .15s;}
+.vitem:hover{border-color:var(--accent);background:var(--card-2);}
+.vw{font-weight:700;font-size:.95rem;min-width:130px;display:flex;align-items:center;gap:8px;position:relative;color:#ff8aa0;}
+.vph{color:var(--muted);font-size:.85rem;}
+.vpos{background:rgba(43,182,115,.18);color:#8de6b6;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:99px;}
+.vdef{color:var(--muted);font-size:.86rem;flex:1;min-width:150px;line-height:1.4;}
+.vab{background:none;border:none;font-size:1rem;cursor:pointer;margin-left:auto;flex-shrink:0;opacity:.6;}
+.vab:hover{opacity:1;}
+.ib{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:var(--accent);color:var(--text);border-radius:50%;font-size:.6rem;font-weight:700;cursor:pointer;flex-shrink:0;position:relative;transition:background .15s;}
+.ib:hover{background:var(--text);color:var(--bg);}
+.ic{display:none;position:absolute;left:0;top:24px;width:240px;background:#000;border:1px solid var(--border);color:var(--text);border-radius:12px;padding:14px 16px;font-size:.77rem;line-height:1.55;z-index:50;font-weight:400;}
+.ic.show{display:block;}
+.ititle{font-weight:700;font-size:.77rem;margin-bottom:6px;color:var(--accent);display:block;}
+
+.gfw{display:grid;grid-template-columns:1fr 180px;gap:20px;align-items:start;}
+@media(max-width:600px){.gfw{grid-template-columns:1fr;}}
+.gfl{display:flex;flex-direction:column;gap:10px;}
+.gfi{display:flex;gap:10px;align-items:baseline;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;font-size:.91rem;line-height:1.65;color:var(--muted);}
+.gn{font-weight:700;color:var(--accent);min-width:18px;}
+.gap{display:inline-block;border-bottom:2.5px solid var(--accent);min-width:100px;padding:0 4px;cursor:pointer;color:#ff8aa0;font-weight:600;font-size:.9rem;transition:background .15s;border-radius:3px;}
+.gap:hover{background:rgba(224,32,58,.15);}
+.gap.gok{border-color:var(--ok);color:var(--ok);background:var(--ok-l);cursor:default;}
+.gap.ger{border-color:var(--er);color:#ff8aa0;background:var(--er-l);}
+.wb{background:var(--bg-soft);border:1.5px solid var(--border);border-radius:14px;padding:16px;position:sticky;top:66px;}
+.wb h4{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.wbi{display:block;width:100%;background:var(--card-2);border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;margin-bottom:7px;font-family:inherit;font-size:.84rem;font-weight:600;color:var(--text);cursor:pointer;text-align:center;transition:all .15s;}
+.wbi:hover:not(.used){background:var(--accent);color:var(--text);border-color:var(--accent);}
+.wbi.sel{background:var(--accent);color:var(--text);border-color:var(--accent);}
+.wbi.used{opacity:.3;cursor:not-allowed;text-decoration:line-through;}
+@media(max-width:600px){
+  .gfw{display:flex;flex-direction:column;}
+  .wb{order:-1;position:sticky;top:54px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;z-index:10;}
+  .wb h4{width:100%;margin-bottom:6px;}
+  .wbi{flex:1 1 auto;width:auto;margin-bottom:0;}
+}
+
+.dvw{background:rgba(224,32,58,.18);color:#ff8aa0;padding:1px 7px;border-radius:5px;font-weight:700;font-size:.88em;}
+.dq{display:flex;gap:14px;align-items:flex-start;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;}
+.dnum{width:30px;height:30px;flex-shrink:0;background:var(--accent);color:var(--text);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;margin-top:2px;}
+.dtext{font-size:.92rem;line-height:1.65;color:var(--muted);}
+.dtext strong{color:var(--text);}
+.dtext textarea{width:100%;margin-top:8px;border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;font-family:inherit;font-size:.88rem;resize:none;min-height:52px;background:var(--card-2);color:var(--text);transition:border-color .2s;}
+.dtext textarea::placeholder{color:var(--muted);}
+.dtext textarea:focus{outline:none;border-color:var(--accent);}
+
+.cbtn{background:var(--accent);color:var(--text);border:none;border-radius:10px;padding:11px 24px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer;margin-top:16px;transition:opacity .2s;}
+.cbtn:hover{opacity:.85;}
+.rbtn{background:transparent;color:var(--muted);border:1.5px solid var(--border);border-radius:10px;padding:11px 18px;font-family:inherit;font-size:.88rem;font-weight:600;cursor:pointer;margin-top:16px;margin-left:8px;}
+.rbtn:hover{border-color:var(--text);color:var(--text);}
+.score{display:inline-block;background:var(--ok-l);border:1.5px solid var(--ok);color:#8de6b6;border-radius:99px;padding:8px 18px;font-weight:700;font-size:.88rem;margin-top:12px;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a class="back" href="movies_series_catalog.html">← Back to catalog</a>
+  <div class="logo">SYNCRO<span>+</span></div>
+</div>
+
+<div class="hero">
+  <div>
+    <span class="hero-eye">Series Lesson · Comedy</span>
+    <h1>Friends — The One with the Football</h1>
+    <p class="hero-sub">An old family tradition turns into a surprisingly intense game, a sudden breakup brings out unexpected reactions, and the whole group ends up more tangled in each other's lives than ever.</p>
+    <div class="hmeta">
+      <span class="hpill">B1–B2</span>
+      <span class="hpill">~22 min</span>
+      <span class="hpill">8 key words</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ══ VIDEO ══ -->
+<section class="section" id="video">
+  <p class="s-lbl">Watch</p>
+  <h2 class="s-title">The Episode</h2>
+  <div class="wcard-vid">
+    <span class="vthumb">📺</span>
+    <div class="vinfo">
+      <h4>Friends — The One with the Football</h4>
+      <p>Opens on YouTube in a new tab</p>
+    </div>
+    <a class="vlink" href="https://www.youtube.com/watch?v=6nVAQaiLNkY&t=31s" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+  </div>
+  <p class="vcap">Watch with your teacher. Don't worry about understanding everything the first time.</p>
+</section>
+
+<!-- ══ WARM-UP ══ -->
+<section class="section" id="warmup">
+  <p class="s-lbl">Section 1</p>
+  <h2 class="s-title">Warm-Up</h2>
+  <span class="phase">Before you watch — talk with your teacher</span>
+
+  <div class="wcard">
+    <div class="wemoji">🏈</div>
+    <div class="wq">Does your family have a tradition or a game that sometimes gets more competitive than expected? Tell us about it.</div>
+    <textarea class="wi" placeholder="In my family, we have a tradition where..."></textarea>
+  </div>
+</section>
+
+<!-- ══ VOCABULARY ══ -->
+<section class="section" id="vocab">
+  <p class="s-lbl">Section 2</p>
+  <h2 class="s-title">Vocabulary</h2>
+  <span class="phase">Words from the episode</span>
+
+  <div class="syn">
+    <p>A group of close friends gather for a holiday and decide to revive an old family football tradition, only to discover that old rivalries never really go away. Meanwhile, one friend deals with a sudden breakup in his own chaotic way, and the group has to juggle everyone's feelings at once.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:.95rem;font-weight:700;margin-bottom:4px;">M — Meaning</h3>
+  <p style="color:var(--muted);font-size:.86rem;margin-bottom:18px;">Read each sentence. Choose the best meaning for the <span class="hl">highlighted word</span>.</p>
+
+  <div class="excard">
+    <p class="exs">1. She was <span class="hl">heartbroken</span> after her boyfriend ended their relationship out of nowhere.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">feeling mild irritation about a small inconvenience</button>
+      <button class="opt" onclick="cM(this,false)">feeling extremely proud of an achievement</button>
+      <button class="opt" onclick="cM(this,false)">feeling physically exhausted after exercise</button>
+      <button class="opt" onclick="cM(this,true)">feeling extreme sadness, especially after losing someone you love</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">2. The <span class="hl">rivalry</span> between the two brothers started when they were just kids.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">a close friendship between two people</button>
+      <button class="opt" onclick="cM(this,false)">a formal business partnership</button>
+      <button class="opt" onclick="cM(this,false)">a shared hobby between neighbors</button>
+      <button class="opt" onclick="cM(this,true)">an ongoing competition between people who want to outdo each other</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">3. He's always been <span class="hl">competitive</span>, even in casual games with friends.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">extremely relaxed about winning or losing</button>
+      <button class="opt" onclick="cM(this,false)">uninterested in games and sports</button>
+      <button class="opt" onclick="cM(this,false)">generous with sharing credit for success</button>
+      <button class="opt" onclick="cM(this,true)">having a strong desire to win or do better than others</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">4. She was <span class="hl">devastated</span> when she found out she didn't get the job.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">mildly disappointed but quickly over it</button>
+      <button class="opt" onclick="cM(this,false)">pleasantly surprised by unexpected news</button>
+      <button class="opt" onclick="cM(this,false)">confused about what to do next</button>
+      <button class="opt" onclick="cM(this,true)">extremely shocked and upset</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">5. Her coworkers were very <span class="hl">sympathetic</span> when she explained what had happened.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">completely indifferent to other people's feelings</button>
+      <button class="opt" onclick="cM(this,false)">secretly amused by someone's misfortune</button>
+      <button class="opt" onclick="cM(this,false)">suspicious of someone's true intentions</button>
+      <button class="opt" onclick="cM(this,true)">showing understanding and compassion for someone's problems</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">6. She has to <span class="hl">juggle</span> work, school, and taking care of her little brother.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">to ignore most of your responsibilities</button>
+      <button class="opt" onclick="cM(this,false)">to complete only one task very slowly</button>
+      <button class="opt" onclick="cM(this,false)">to delegate every task to someone else</button>
+      <button class="opt" onclick="cM(this,true)">to manage several responsibilities at the same time</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">7. He still holds a <span class="hl">grudge</span> against his old business partner.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">a formal written apology</button>
+      <button class="opt" onclick="cM(this,false)">a friendly bet between two people</button>
+      <button class="opt" onclick="cM(this,false)">a shared joke between old friends</button>
+      <button class="opt" onclick="cM(this,true)">a long-lasting feeling of anger toward someone</button>
+    </div>
+  </div>
+
+  <div class="excard">
+    <p class="exs">8. It took her months, but she finally decided to <span class="hl">forgive</span> her sister.</p>
+    <div class="opts">
+      <button class="opt" onclick="cM(this,false)">to forget a person completely</button>
+      <button class="opt" onclick="cM(this,false)">to officially end a friendship</button>
+      <button class="opt" onclick="cM(this,false)">to ask someone for help</button>
+      <button class="opt" onclick="cM(this,true)">to stop feeling angry about something someone did wrong</button>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:.95rem;font-weight:700;margin-bottom:4px;">P — Pronunciation</h3>
+  <p style="color:var(--muted);font-size:.86rem;margin-bottom:18px;">Click each word to hear it. Tap <strong>i</strong> to learn more.</p>
+
+  <div class="vlist">
+    <div class="vitem" onclick="speak('heartbroken')">
+      <span class="vw">heartbroken<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Word family</span><strong>heartbreak</strong> (noun) → <strong>heartbroken</strong> (adjective)</span></span></span>
+      <span class="vph">/ˈhɑːrt.broʊ.kən/</span><span class="vpos">adjective</span>
+      <span class="vdef">feeling extreme sadness, especially after losing someone you love</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('rivalry')">
+      <span class="vw">rivalry<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Word family</span><strong>rival</strong> (noun) → <strong>rivalry</strong> (noun, the relationship/competition itself)</span></span></span>
+      <span class="vph">/ˈraɪ.vəl.ri/</span><span class="vpos">noun</span>
+      <span class="vdef">an ongoing competition between people who want to outdo each other</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('competitive')">
+      <span class="vw">competitive<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Word family</span><strong>compete</strong> (verb) → <strong>competition</strong> (noun) → <strong>competitive</strong> (adjective)</span></span></span>
+      <span class="vph">/kəmˈpɛt.ɪ.tɪv/</span><span class="vpos">adjective</span>
+      <span class="vdef">having a strong desire to win or do better than others</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('devastated')">
+      <span class="vw">devastated<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Intensity</span>Stronger than "sad" or "upset" — describes a very deep emotional shock.</span></span></span>
+      <span class="vph">/ˈdɛv.ə.steɪ.tɪd/</span><span class="vpos">adjective</span>
+      <span class="vdef">extremely shocked and upset</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('sympathetic')">
+      <span class="vw">sympathetic<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Word family</span><strong>sympathy</strong> (noun) → <strong>sympathetic</strong> (adjective)</span></span></span>
+      <span class="vph">/ˌsɪm.pəˈθɛt.ɪk/</span><span class="vpos">adjective</span>
+      <span class="vdef">showing understanding and compassion for someone's problems</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('juggle')">
+      <span class="vw">juggle<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Figurative use</span>Literally means tossing objects in the air, but is often used figuratively for managing tasks.</span></span></span>
+      <span class="vph">/ˈdʒʌ.ɡəl/</span><span class="vpos">verb</span>
+      <span class="vdef">to manage several responsibilities at the same time</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('grudge')">
+      <span class="vw">grudge<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Common phrase</span>"to hold a grudge" / "to bear a grudge"</span></span></span>
+      <span class="vph">/ɡrʌdʒ/</span><span class="vpos">noun</span>
+      <span class="vdef">a long-lasting feeling of anger toward someone</span>
+      <button class="vab">🔊</button>
+    </div>
+    <div class="vitem" onclick="speak('forgive')">
+      <span class="vw">forgive<span class="ib" onclick="event.stopPropagation();ti(this)">i<span class="ic"><span class="ititle">Word family</span><strong>forgive</strong> (verb) → <strong>forgiveness</strong> (noun)</span></span></span>
+      <span class="vph">/fərˈɡɪv/</span><span class="vpos">verb</span>
+      <span class="vdef">to stop feeling angry about something someone did wrong</span>
+      <button class="vab">🔊</button>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:.95rem;font-weight:700;margin-bottom:4px;">F — Form/Fill: Fill in the Gaps</h3>
+  <p style="color:var(--muted);font-size:.86rem;margin-bottom:18px;">Click a word from the bank, then click the blank.</p>
+
+  <div class="gfw">
+    <div class="gfl">
+      <div class="gfi"><span class="gn">1.</span><span>He felt completely <span class="gap" data-answer="heartbroken" onclick="fG(this)">___________</span> after the relationship ended so suddenly.</span></div>
+      <div class="gfi"><span class="gn">2.</span><span>The friendly <span class="gap" data-answer="rivalry" onclick="fG(this)">___________</span> between the siblings made every game night intense.</span></div>
+      <div class="gfi"><span class="gn">3.</span><span>She's naturally <span class="gap" data-answer="competitive" onclick="fG(this)">___________</span>, so she takes every game very seriously.</span></div>
+      <div class="gfi"><span class="gn">4.</span><span>The whole family was <span class="gap" data-answer="devastated" onclick="fG(this)">___________</span> by the unexpected news.</span></div>
+      <div class="gfi"><span class="gn">5.</span><span>His friends were really <span class="gap" data-answer="sympathetic" onclick="fG(this)">___________</span> when he told them what happened.</span></div>
+      <div class="gfi"><span class="gn">6.</span><span>It's hard to <span class="gap" data-answer="juggle" onclick="fG(this)">___________</span> a full-time job and a new baby.</span></div>
+      <div class="gfi"><span class="gn">7.</span><span>She's held a <span class="gap" data-answer="grudge" onclick="fG(this)">___________</span> against her old roommate for years.</span></div>
+      <div class="gfi"><span class="gn">8.</span><span>It took a long time, but he finally decided to <span class="gap" data-answer="forgive" onclick="fG(this)">___________</span> his brother.</span></div>
+    </div>
+    <div class="wb">
+      <h4>Word Bank</h4>
+      <button class="wbi" onclick="sW(this)">sympathetic</button>
+      <button class="wbi" onclick="sW(this)">forgive</button>
+      <button class="wbi" onclick="sW(this)">heartbroken</button>
+      <button class="wbi" onclick="sW(this)">grudge</button>
+      <button class="wbi" onclick="sW(this)">competitive</button>
+      <button class="wbi" onclick="sW(this)">juggle</button>
+      <button class="wbi" onclick="sW(this)">rivalry</button>
+      <button class="wbi" onclick="sW(this)">devastated</button>
+    </div>
+  </div>
+  <button class="cbtn" onclick="chGF()">Check Answers</button>
+  <button class="rbtn" onclick="rsGF()">Reset</button>
+  <div id="gfs" class="score" style="display:none;"></div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:.95rem;font-weight:700;margin-bottom:4px;">U — Use</h3>
+  <p style="color:var(--muted);font-size:.86rem;margin-bottom:16px;">Answer with your teacher, using the word in your response.</p>
+  <div style="display:flex;flex-direction:column;gap:9px;">
+    <div class="dq"><div class="dnum">1</div><div class="dtext">Have you ever felt <span class="dvw">heartbroken</span> about something that wasn't necessarily romantic, like losing a friendship or a job?</div></div>
+    <div class="dq"><div class="dnum">2</div><div class="dtext">Is there a <span class="dvw">rivalry</span> — friendly or serious — in your family or friend group?</div></div>
+    <div class="dq"><div class="dnum">3</div><div class="dtext">Would you describe yourself as a <span class="dvw">competitive</span> person? In what situations does it show the most?</div></div>
+    <div class="dq"><div class="dnum">4</div><div class="dtext">Can you remember a time you felt <span class="dvw">devastated</span> by some news? How did you recover?</div></div>
+    <div class="dq"><div class="dnum">5</div><div class="dtext">Who is the most <span class="dvw">sympathetic</span> person in your life when you're going through something hard?</div></div>
+    <div class="dq"><div class="dnum">6</div><div class="dtext">What are you currently having to <span class="dvw">juggle</span> in your daily life?</div></div>
+    <div class="dq"><div class="dnum">7</div><div class="dtext">Do you tend to hold a <span class="dvw">grudge</span> for a long time, or do you let things go quickly?</div></div>
+    <div class="dq"><div class="dnum">8</div><div class="dtext">Is there someone you've had to <span class="dvw">forgive</span> for something significant? What helped you get there?</div></div>
+  </div>
+</section>
+
+<!-- ══ DISCUSSION ══ -->
+<section class="section" id="discuss">
+  <p class="s-lbl">Section 3</p>
+  <h2 class="s-title">Discussion</h2>
+  <span class="phase">Talk about the episode</span>
+
+  <div class="dq"><div class="dnum">1</div><div class="dtext">The episode shows an old family tradition becoming surprisingly intense. Does your family have a tradition that sometimes turns more competitive than expected?<textarea placeholder="In my family..."></textarea></div></div>
+  <div class="dq"><div class="dnum">2</div><div class="dtext">One character goes back to an old habit after a stressful event. Do you think stress can easily bring back habits we thought we'd left behind?<textarea placeholder="I think stress..."></textarea></div></div>
+  <div class="dq"><div class="dnum">3</div><div class="dtext">A character struggles to make a decision quickly while friends give conflicting advice. Do you find it easy or hard to decide things under pressure from friends?<textarea placeholder="I find it..."></textarea></div></div>
+  <div class="dq"><div class="dnum">4</div><div class="dtext">There's tension in the group about loyalty and the "rules" after a breakup. Do you think two people can interpret the same situation completely differently?<textarea placeholder="I think people..."></textarea></div></div>
+  <div class="dq"><div class="dnum">5</div><div class="dtext">The friends spend most of their time together, through good news and bad. How important do you think it is to have a close group of friends like this?<textarea placeholder="I think having close friends..."></textarea></div></div>
+</section>
+
+</div>
+
+<script>
+function speak(w){if(!window.speechSynthesis)return;const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u);}
+function ti(b){const c=b.querySelector('.ic');document.querySelectorAll('.ic.show').forEach(e=>{if(e!==c)e.classList.remove('show');});c.classList.toggle('show');}
+document.addEventListener('click',e=>{if(!e.target.closest('.ib'))document.querySelectorAll('.ic.show').forEach(e=>e.classList.remove('show'));});
+function cM(btn,ok){const card=btn.closest('.excard');if(card.querySelector('.correct'))return;btn.classList.add(ok?'correct':'wrong');if(!ok)setTimeout(()=>{card.querySelectorAll('.opt').forEach(b=>{if(b.getAttribute('onclick').includes('true'))b.classList.add('correct');});},600);}
+let pk=null;
+function sW(btn){if(btn.classList.contains('used'))return;document.querySelectorAll('.wbi').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');pk=btn;}
+function fG(gap){
+  if(!pk)return;
+  if(gap.dataset.filled){document.querySelectorAll('.wbi').forEach(b=>{if(b.textContent.trim()===gap.dataset.filled)b.classList.remove('used');});}
+  gap.textContent=pk.textContent.trim();gap.dataset.filled=pk.textContent.trim();
+  gap.classList.remove('gok','ger');pk.classList.add('used');pk.classList.remove('sel');pk=null;
+}
+function chGF(){
+  let c=0;
+  document.querySelectorAll('.gap').forEach(g=>{
+    if(!g.dataset.filled)return;
+    const ans=g.dataset.answer.toLowerCase();
+    const fil=g.dataset.filled.toLowerCase();
+    if(fil===ans){g.classList.add('gok');g.classList.remove('ger');c++;}
+    else{g.classList.add('ger');g.classList.remove('gok');}
+  });
+  const s=document.getElementById('gfs');s.textContent=`Score: ${c} / 8`;s.style.display='inline-block';
+}
+function rsGF(){
+  document.querySelectorAll('.gap').forEach(g=>{g.textContent='___________';g.classList.remove('gok','ger');delete g.dataset.filled;});
+  document.querySelectorAll('.wbi').forEach(b=>b.classList.remove('used','sel'));
+  document.getElementById('gfs').style.display='none';pk=null;
+}
+</script>
+</body>
+</html>
