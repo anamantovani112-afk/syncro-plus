@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grey's Anatomy — Self-Study — SYNCRO+</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d; --bg-soft:#15151a; --card:#1c1c22; --card-2:#23232b;
+  --text:#f4f2ee; --muted:#9a9aa3; --border:#2c2c34;
+  --accent:#e0203a; --accent-d:#a3142a; --ok:#2bb673; --ok-l:#16291f;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',Helvetica,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:16px;line-height:1.6;}
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:28px;padding:16px 24px;background:linear-gradient(to bottom, rgba(11,11,13,.95), rgba(11,11,13,.7));backdrop-filter:blur(6px);}
+.back{color:var(--muted);font-size:.82rem;font-weight:600;text-decoration:none;}
+.back:hover{color:var(--text);}
+.logo{font-weight:900;font-size:1.1rem;letter-spacing:.02em;color:var(--accent);margin-left:auto;}
+.logo span{color:var(--text);}
+.hero{position:relative;min-height:40vh;display:flex;align-items:flex-end;padding:0 24px 40px;background:
+  linear-gradient(to top, var(--bg) 4%, rgba(11,11,13,.25) 45%, rgba(11,11,13,.6) 100%),
+  linear-gradient(to right, rgba(11,11,13,.85) 10%, rgba(11,11,13,.2) 65%),
+  url('posters/greys_anatomy.jpg');background-size:cover;background-position:center 12%;}
+.hero-eye{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.hero h1{font-size:clamp(1.9rem,5vw,3rem);font-weight:900;line-height:1.08;max-width:600px;margin-bottom:10px;}
+.hero-sub{color:rgba(244,242,238,.75);font-size:.92rem;max-width:560px;line-height:1.7;}
+.hmeta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;}
+.hpill{padding:6px 16px;font-size:.78rem;font-weight:700;border-radius:99px;background:rgba(154,154,163,.18);color:var(--text);border:1px solid var(--border);}
+.hpill.solo{background:rgba(43,182,115,.18);color:#8de6b6;border-color:rgba(43,182,115,.4);}
+.page{max-width:820px;margin:0 auto;padding:0 24px 80px;}
+.section{background:var(--card);border-radius:16px;padding:34px 32px;margin-top:20px;border:1px solid var(--border);}
+@media(max-width:600px){.section{padding:22px 16px;border-radius:14px;}}
+.s-lbl{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.s-title{font-size:1.35rem;font-weight:800;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.phase{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;margin-bottom:20px;border-radius:99px;background:rgba(224,32,58,.15);color:#ff5470;}
+.divider{border:none;border-top:1px solid var(--border);margin:24px 0;}
+.wcard-vid{display:flex;align-items:center;gap:18px;background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:6px;}
+.wcard-vid .vthumb{font-size:2.2rem;flex-shrink:0;}
+.wcard-vid .vinfo{flex:1;}
+.wcard-vid .vinfo h4{color:var(--text);font-size:1rem;font-weight:700;margin-bottom:4px;}
+.wcard-vid .vinfo p{color:var(--muted);font-size:.82rem;}
+.vlink{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--text);border-radius:10px;padding:11px 22px;font-size:.85rem;font-weight:700;text-decoration:none;flex-shrink:0;white-space:nowrap;}
+.vlink:hover{background:var(--accent-d);}
+.vcap{font-size:.78rem;color:var(--muted);margin-bottom:18px;margin-top:10px;}
+.steps{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
+.step{display:flex;gap:12px;align-items:flex-start;font-size:.86rem;color:var(--muted);line-height:1.55;}
+.step b{color:var(--text);flex-shrink:0;}
+.ssitem{background:var(--bg-soft);border:1.5px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:14px;}
+.sstime{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;color:var(--accent);background:rgba(224,32,58,.12);padding:3px 10px;border-radius:99px;margin-bottom:10px;}
+.sshint{font-size:.9rem;color:var(--text);line-height:1.6;margin-bottom:14px;}
+.ssrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+@media(max-width:560px){.ssrow{grid-template-columns:1fr;}}
+.ssfield label{display:block;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.ssfield input{width:100%;border:1.5px solid var(--border);background:var(--card-2);padding:9px 11px;border-radius:8px;font-family:inherit;font-size:.88rem;color:var(--text);outline:none;}
+.ssfield input:focus{border-color:var(--accent);}
+.ssfield input::placeholder{color:var(--muted);}
+.ssreveal{background:transparent;border:1.5px solid var(--border);color:var(--muted);border-radius:8px;padding:8px 16px;font-family:inherit;font-size:.8rem;font-weight:600;cursor:pointer;}
+.ssreveal:hover{border-color:var(--accent);color:var(--text);}
+.ssanswer{display:none;margin-top:12px;background:rgba(43,182,115,.1);border:1.5px solid rgba(43,182,115,.35);border-radius:8px;padding:12px 14px;font-size:.86rem;color:#8de6b6;line-height:1.55;}
+.ssanswer.show{display:block;}
+.dq{display:flex;gap:14px;align-items:flex-start;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;}
+.dnum{width:30px;height:30px;flex-shrink:0;background:var(--accent);color:var(--text);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;margin-top:2px;}
+.dtext{font-size:.92rem;line-height:1.65;color:var(--muted);}
+.dtext textarea{width:100%;margin-top:8px;border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;font-family:inherit;font-size:.88rem;resize:none;min-height:52px;background:var(--card-2);color:var(--text);}
+.dtext textarea::placeholder{color:var(--muted);}
+.dtext textarea:focus{outline:none;border-color:var(--accent);}
+.donebox{background:var(--ok-l);border:1.5px solid var(--ok);border-radius:14px;padding:20px 22px;text-align:center;margin-top:6px;}
+.donebox p{color:#8de6b6;font-size:.92rem;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a class="back" href="movies_series_catalog.html">← Back to catalog</a>
+  <div class="logo">SYNCRO<span>+</span></div>
+</div>
+
+<div class="hero">
+  <div>
+    <span class="hero-eye">Self-Study · Medical Drama</span>
+    <h1>Grey's Anatomy — Self-Study</h1>
+    <p class="hero-sub">Watch the pilot episode on your own and pause where indicated. No teacher needed — just you, the video, and a few real expressions to catch along the way.</p>
+    <div class="hmeta">
+      <span class="hpill solo">📍 Solo Track</span>
+      <span class="hpill">B2–C1</span>
+      <span class="hpill">~40 min</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<section class="section" id="video">
+  <p class="s-lbl">Watch</p>
+  <h2 class="s-title">The Episode</h2>
+  <div class="wcard-vid">
+    <span class="vthumb">🎬</span>
+    <div class="vinfo">
+      <h4>Grey's Anatomy — Pilot</h4>
+      <p>Opens in Google Drive in a new tab</p>
+    </div>
+    <a class="vlink" href="https://drive.google.com/file/d/1GEI6S9WvEB2ec4HwvO4HxxFUcqQ-mdTD/view?usp=sharing" target="_blank" rel="noopener">▶ Open in Drive</a>
+  </div>
+  <p class="vcap">This is the exact same episode used in the teacher-led lesson — this version is just built for you to work through alone.</p>
+  <div class="steps">
+    <div class="step"><b>1.</b> Open the video above in a new tab.</div>
+    <div class="step"><b>2.</b> Watch normally until you reach the timestamps below — then pause.</div>
+    <div class="step"><b>3.</b> Listen to the line a couple of times, write the expression you hear, and guess its meaning before checking.</div>
+    <div class="step"><b>4.</b> Keep watching after each pause. At the end, answer the comprehension questions in your own words.</div>
+  </div>
+</section>
+
+<section class="section" id="catch">
+  <p class="s-lbl">Section 1</p>
+  <h2 class="s-title">Catch the Expression</h2>
+  <span class="phase">Pause at each timestamp below</span>
+
+  <div class="ssitem">
+    <span class="sstime">⏸ ~09:35</span>
+    <p class="sshint">Reviewing a new intern's file, a senior doctor says he only just barely qualified to get into the program. Listen for a 4-word idiom meaning "to just barely succeed or qualify."</p>
+    <div class="ssrow">
+      <div class="ssfield"><label>Expression you heard</label><input type="text" placeholder="e.g. barely made the..."></div>
+      <div class="ssfield"><label>Your guess at the meaning</label><input type="text" placeholder="I think it means..."></div>
+    </div>
+    <button class="ssreveal" onclick="this.nextElementSibling.classList.toggle('show')">Reveal meaning</button>
+    <div class="ssanswer">"barely made the cut" — to just barely qualify or succeed at meeting a required standard.</div>
+  </div>
+
+  <div class="ssitem">
+    <span class="sstime">⏸ ~09:40</span>
+    <p class="sshint">Explaining a strategy for keeping a group of interns in order, a doctor says punishing one intern will make the rest start behaving the same way. Listen for a 3-word idiom meaning "to start obeying or conforming."</p>
+    <div class="ssrow">
+      <div class="ssfield"><label>Expression you heard</label><input type="text" placeholder="e.g. fall in..."></div>
+      <div class="ssfield"><label>Your guess at the meaning</label><input type="text" placeholder="I think it means..."></div>
+    </div>
+    <button class="ssreveal" onclick="this.nextElementSibling.classList.toggle('show')">Reveal meaning</button>
+    <div class="ssanswer">"fall in line" — to start obeying the rules or conforming to expected behavior.</div>
+  </div>
+
+  <div class="ssitem">
+    <span class="sstime">⏸ ~13:00</span>
+    <p class="sshint">During a tense first surgery, the other interns place bets on whether their nervous friend will succeed. Listen for a 3-word idiom meaning "to succeed at something difficult."</p>
+    <div class="ssrow">
+      <div class="ssfield"><label>Expression you heard</label><input type="text" placeholder="e.g. pull it..."></div>
+      <div class="ssfield"><label>Your guess at the meaning</label><input type="text" placeholder="I think it means..."></div>
+    </div>
+    <button class="ssreveal" onclick="this.nextElementSibling.classList.toggle('show')">Reveal meaning</button>
+    <div class="ssanswer">"pull it off" — to succeed at doing something difficult or risky.</div>
+  </div>
+
+  <div class="ssitem">
+    <span class="sstime">⏸ ~35:15</span>
+    <p class="sshint">A senior doctor recognizes a new intern's family resemblance instantly. Listen for a 3-word idiom meaning "to look exactly like someone."</p>
+    <div class="ssrow">
+      <div class="ssfield"><label>Expression you heard</label><input type="text" placeholder="e.g. spitting..."></div>
+      <div class="ssfield"><label>Your guess at the meaning</label><input type="text" placeholder="I think it means..."></div>
+    </div>
+    <button class="ssreveal" onclick="this.nextElementSibling.classList.toggle('show')">Reveal meaning</button>
+    <div class="ssanswer">"the spitting image (of someone)" — looking almost exactly identical to another person, usually a family member.</div>
+  </div>
+</section>
+
+<section class="section" id="notes">
+  <p class="s-lbl">Section 2</p>
+  <h2 class="s-title">Your Own Notes</h2>
+  <span class="phase">Anything else new you heard?</span>
+  <p style="color:var(--muted);font-size:.86rem;margin-bottom:16px;">Did you hear any other new word or expression while watching? Write it down with your own definition.</p>
+  <div class="ssrow"><div class="ssfield"><label>New word / expression</label><input type="text" placeholder="..."></div><div class="ssfield"><label>My definition</label><input type="text" placeholder="..."></div></div>
+  <div class="ssrow"><div class="ssfield"><label>New word / expression</label><input type="text" placeholder="..."></div><div class="ssfield"><label>My definition</label><input type="text" placeholder="..."></div></div>
+  <div class="ssrow"><div class="ssfield"><label>New word / expression</label><input type="text" placeholder="..."></div><div class="ssfield"><label>My definition</label><input type="text" placeholder="..."></div></div>
+</section>
+
+<section class="section" id="check">
+  <p class="s-lbl">Section 3</p>
+  <h2 class="s-title">Comprehension Check</h2>
+  <span class="phase">Answer in your own words</span>
+  <div class="dq"><div class="dnum">1</div><div class="dtext">What does Dr. Bailey's "five rules" speech tell the new interns about hospital life?<textarea placeholder="Her rules tell us..."></textarea></div></div>
+  <div class="dq"><div class="dnum">2</div><div class="dtext">Why does George get chosen for the first surgery, and what goes wrong during it?<textarea placeholder="George is chosen because..."></textarea></div></div>
+  <div class="dq"><div class="dnum">3</div><div class="dtext">How do Meredith and Cristina figure out what's wrong with their patient, Katie?<textarea placeholder="They figure it out by..."></textarea></div></div>
+  <div class="dq"><div class="dnum">4</div><div class="dtext">What does Meredith discover about her mother at the end of the episode?<textarea placeholder="She discovers that..."></textarea></div></div>
+  <div class="dq"><div class="dnum">5</div><div class="dtext">What was the most intense or memorable moment for you in the episode?<textarea placeholder="The most memorable moment was..."></textarea></div></div>
+  <div class="donebox"><p>✅ Finished? Bring your notes and answers to your next class — your teacher can go over anything you weren't sure about.</p></div>
+</section>
+
+</div>
+</body>
+</html>

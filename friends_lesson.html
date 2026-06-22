@@ -127,6 +127,21 @@ body{font-family:'Outfit',Helvetica,sans-serif;background:var(--bg);color:var(--
 .rbtn{background:transparent;color:var(--muted);border:1.5px solid var(--border);border-radius:10px;padding:11px 18px;font-family:inherit;font-size:.88rem;font-weight:600;cursor:pointer;margin-top:16px;margin-left:8px;}
 .rbtn:hover{border-color:var(--text);color:var(--text);}
 .score{display:inline-block;background:var(--ok-l);border:1.5px solid var(--ok);color:#8de6b6;border-radius:99px;padding:8px 18px;font-weight:700;font-size:.88rem;margin-top:12px;}
+
+/* self-study */
+.ssitem{background:var(--bg-soft);border:1.5px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+.sstime{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;color:var(--accent);background:rgba(224,32,58,.12);padding:3px 10px;border-radius:99px;margin-bottom:10px;}
+.sshint{font-size:.88rem;color:var(--muted);line-height:1.55;margin-bottom:12px;}
+.ssrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+@media(max-width:560px){.ssrow{grid-template-columns:1fr;}}
+.ssfield label{display:block;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.ssfield input{width:100%;border:1.5px solid var(--border);background:var(--card-2);padding:8px 10px;border-radius:8px;font-family:inherit;font-size:.88rem;color:var(--text);outline:none;}
+.ssfield input:focus{border-color:var(--accent);}
+.ssfield input::placeholder{color:var(--muted);}
+.ssreveal{background:transparent;border:1.5px solid var(--border);color:var(--muted);border-radius:8px;padding:7px 14px;font-family:inherit;font-size:.78rem;font-weight:600;cursor:pointer;}
+.ssreveal:hover{border-color:var(--accent);color:var(--text);}
+.ssanswer{display:none;margin-top:10px;background:rgba(43,182,115,.1);border:1.5px solid rgba(43,182,115,.35);border-radius:8px;padding:10px 12px;font-size:.85rem;color:#8de6b6;line-height:1.5;}
+.ssanswer.show{display:block;}
 </style>
 </head>
 <body>
@@ -156,12 +171,12 @@ body{font-family:'Outfit',Helvetica,sans-serif;background:var(--bg);color:var(--
   <p class="s-lbl">Watch</p>
   <h2 class="s-title">The Episode</h2>
   <div class="wcard-vid">
-    <span class="vthumb">📺</span>
+    <span class="vthumb">🎬</span>
     <div class="vinfo">
-      <h4>Friends — The One with the Football</h4>
-      <p>Opens on YouTube in a new tab</p>
+      <h4>Friends — 3x09 — The One with the Football</h4>
+      <p>Opens in Google Drive in a new tab</p>
     </div>
-    <a class="vlink" href="https://www.youtube.com/watch?v=6nVAQaiLNkY&t=31s" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+    <a class="vlink" href="https://drive.google.com/file/d/1O21xOAoIIobUkV87di5SYHxQm5KuveJl/view?usp=drive_link" target="_blank" rel="noopener">▶ Open in Drive</a>
   </div>
   <p class="vcap">Watch with your teacher. Don't worry about understanding everything the first time.</p>
 </section>
